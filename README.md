@@ -1,4 +1,4 @@
 #REME
 
 
-This is my first gitHug test
+This is my first gitHub test
