@@ -1,1 +1,3 @@
-just test to learn git!
+just test to learn giT!
+
+how to use git?
