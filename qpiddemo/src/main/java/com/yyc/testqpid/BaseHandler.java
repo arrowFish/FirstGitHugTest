@@ -27,8 +27,6 @@ public class BaseHandler implements IGxxChannelListener {
     @Qualifier("gxxMsgChannel")
     public IGxxChannel gxxChannel;
 
-    @Value("${}")
-
     private static Map<String, IGxxChannelListener> dispatcherMap = new HashMap<>();
 
     public boolean initDispatcher(String subject, String type, IGxxChannelListener listener){

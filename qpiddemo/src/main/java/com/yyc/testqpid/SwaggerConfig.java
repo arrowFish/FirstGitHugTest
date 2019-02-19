@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *          2,浏览器访问 => http://ip:8089/gmvcs/uap/swagger-ui.html
  *
  * Created with IntelliJ IDEA
- * Created by zhaohuan
+ * Created by yyc
  * DATE : 2017/8/22.
  * TIME : 16:09
  * EMAIL : 791934554@qq.com
