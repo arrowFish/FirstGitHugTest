@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertiesReader"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--本级平台作为上级：上级消息通道-->
+    <bean id="gxxMsgChannel" class="com.gosuncn.gm.messagechannel.GxxChannelImpl"
+          init-method="open" destroy-method="close">
+        <property name="qpidBrokerList" value="${msgbus.msg.qpid.brokerlist}"></property>
+        <property name="qpidQueueName" value="${msgbus.msg.qpid.queue.name}"></property>
+        <property name="durable" value="${msgbus.msg.qpid.queue.isDurable}"></property>
+        <property name="registerSubjects"
+                  value="#{'${msgbus.msg.qpid.queue.subjects}'.split(';')}"></property>
+    </bean>
+
+    <bean id="baseHandler"
+          class="com.yyc.testqpid.BaseHandler" init-method="init">
+    </bean>
+
+    <bean id="receiveHandler" class="com.yyc.testqpid.handler.TestReqAndRespHandler" init-method="start" ></bean>
+
+
+    <bean id="testReqHandler" class="com.yyc.testqpid.handler.TestReqHandler" init-method="start" ></bean>
+</beans>
